@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dic81cxbsl4fv"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_iid30"]
+[ext_resource type="Texture2D" uid="uid://j03raij46wmp" path="res://slime_purple.png" id="2_kaq0x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l8h7"]
+atlas = ExtResource("2_kaq0x")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w31jc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l8h7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcoay"]
+size = Vector2(8, 9)
+
+[node name="enemy" type="Node2D"]
+script = ExtResource("1_iid30")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_w31jc")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_xcoay")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

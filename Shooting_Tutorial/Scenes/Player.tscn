@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c65gh7kg4oxim"]
+[gd_scene load_steps=5 format=3 uid="uid://c65gh7kg4oxim"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_grqqp"]
 [ext_resource type="Texture2D" uid="uid://cd14t30owjq37" path="res://icon.svg" id="2_bpsso"]
+[ext_resource type="PackedScene" uid="uid://dic81cxbsl4fv" path="res://Scenes/enemy.tscn" id="3_7tni6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0oqs"]
 
@@ -26,3 +27,6 @@ position = Vector2(20, 2.08165e-12)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="enemy" parent="." instance=ExtResource("3_7tni6")]
+position = Vector2(126, 0)
