@@ -13,3 +13,7 @@ func _on_timer_timeout():
 	get_parent().add_child(enemy2)
 	enemy2.global_position = Vector2(rand_x,rand_y)
 	$Timer.wait_time = 2
+
+
+func _on_area_2d_area_entered(area):
+	area.queue_free()
